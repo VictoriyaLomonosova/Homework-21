@@ -1,19 +1,22 @@
 import template from "lodash.template";
 import html from "./index.html";
-const filmsList = require("./film.json");
+import filmsList from "./film.json"
 
+console.log(typeof filmsList)
 const templateRenderer = template(html);
 
 class List {
   constructor() {
     this.films = [];
 
+
+
     for (let i = 0; i < filmsList.length; i++) {
       const film = filmsList[i];
       this.films.push(film);
     }
+  
   }
-
   render() {
     const temp = templateRenderer({
       films: this.films,
