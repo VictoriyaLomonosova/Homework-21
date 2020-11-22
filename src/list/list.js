@@ -1,21 +1,18 @@
 import template from "lodash.template";
 import html from "./index.html";
-import filmsList from "./film.json"
+import filmsList from "./film.json";
 
-console.log(typeof filmsList)
+console.log(typeof filmsList);
 const templateRenderer = template(html);
 
 class List {
   constructor() {
     this.films = [];
 
-
-
     for (let i = 0; i < filmsList.length; i++) {
       const film = filmsList[i];
       this.films.push(film);
     }
-  
   }
   render() {
     const temp = templateRenderer({
@@ -25,7 +22,7 @@ class List {
     const container = document.createElement("div");
     container.className = "cardElem";
     container.innerHTML = temp;
-    document.addEventListener("click", (event) => {
+    container.addEventListener("click", (event) => {
       switch (event.target.dataset.id) {
         case "edit":
           console.log("Edit");
